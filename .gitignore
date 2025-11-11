@@ -1,0 +1,75 @@
+# Entorno virtual de Python
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Modelos entrenados y datos generados
+models/*.pkl
+models/*.joblib
+models/*.h5
+models/*.pt
+models/*.pth
+
+# Mantener estructura de carpeta models pero excluir modelos pesados
+# Si quieres versionar results.json, comenta la siguiente línea:
+models/results.json
+
+# Archivos de Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Archivos de configuración local
+.env
+.env.local
+*.local
+
+# Base de datos SQLite (Django)
+*.sqlite3
+db.sqlite3
+
+# Archivos de media (Django)
+media/
+
+# Archivos estáticos recolectados (Django)
+staticfiles/
+static_collected/
+
+# Archivos de coverage y testing
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+
+# Distribución / empaquetado
+build/
+dist/
+*.egg-info/
+
+# Node modules (si usas React en el frontend)
+node_modules/
+npm-debug.log
+yarn-error.log
