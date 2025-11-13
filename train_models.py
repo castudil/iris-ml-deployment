@@ -2,7 +2,7 @@
 Script de entrenamiento de modelos de clasificación usando el dataset IRIS.
 
 Este script entrena múltiples clasificadores (RandomForest y SVC) sobre el dataset IRIS,
-evalúa su rendimiento en un conjunto de prueba, guarda los modelos entrenados en archivos
+evalúa su rendimiento en un conjunto de prueba, guarda los modelos enpip trenados en archivos
 PKL y registra todas las métricas y metadatos en un archivo JSON para su posterior consumo
 desde una API.
 

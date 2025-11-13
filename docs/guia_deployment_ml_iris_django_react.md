@@ -12,12 +12,13 @@
      - Predicción con un modelo dado  
      - Comparación de todos los modelos  
      - XAI con **SHAP** (imagen + explicación)
-3. **Frontend con React + Vite + TailwindCSS**  
+3. **Pruebas con Postman**  
+   - Probar cada endpoint antes de consumirlo desde el frontend.
+4. **Frontend con React + Vite + TailwindCSS**  
    - Formularios para enviar datos a la API  
    - Vistas para mostrar predicciones, comparación de modelos y resultados de XAI
-4. **Pruebas con Postman**  
-   - Probar cada endpoint antes de consumirlo desde el frontend.
-5. **Control de versiones en GitHub**  
+
+Transversal **Control de versiones en GitHub**  
    - Commits pequeños por etapa para poder hacer rollback sin dolor.
 
 ---
@@ -95,36 +96,18 @@ Responsabilidades:
 > **Checkpoint Git:**  
 > Commit: `feat: script de entrenamiento y comparación de modelos IRIS`.
 
----
-
-## 3. Etapa ML (2): preparar el módulo para usar desde la API
-
-Refactor del código de ML para que pueda ser importado por Django:
-
-1. En `model.py` o en un nuevo módulo (por ejemplo `ml_core.py`), definir funciones como:
-   - `train_and_save_models()` (si quieres reentrenar)
-   - `load_models()` que cargue los PKL a memoria
-   - `predict_with_model(model_name, features)`  
-     - `model_name` ∈ {`"rf"`, `"svc"`}  
-     - `features` = lista/array con el orden exacto de los atributos IRIS.
-2. Dejar claro en comentarios:
-   - Orden de las features esperadas (ej. `[sepal_length, sepal_width, petal_length, petal_width]`).
-   - Ruta donde se guardan los PKL y el JSON (ej. carpeta `models/`).
-
-> **Checkpoint Git:**  
-> Commit: `refactor: separar lógica de ML en funciones reutilizables`.
 
 ---
 
-## 4. Etapa Backend: API en Django
+## 3. Etapa Backend: API en Django
 
-### 4.1. Crear proyecto Django
+### 3.1. Crear proyecto Django
 
 1. Instalar Django y, si quieres, Django REST Framework:
    ```bash
    pip install django djangorestframework
    ```
-2. Crear proyecto:
+2. Crear proyecto dentro de carpeta "backend":
    ```bash
    django-admin startproject iris_api
    ```
@@ -137,7 +120,7 @@ Refactor del código de ML para que pueda ser importado por Django:
 > **Checkpoint Git:**  
 > Commit: `feat: proyecto django iris_api con app ml_api`.
 
-### 4.2. Integrar ML al backend
+### 3.2. Integrar ML al backend
 
 Dentro de `ml_api`:
 
@@ -147,7 +130,7 @@ Dentro de `ml_api`:
 2. Usar Copilot con prompts del tipo:
    - *“Create a Django view that receives a POST with model_name and iris features and returns a JSON prediction using a loaded sklearn model”*.
 
-### 4.3. Endpoints a implementar
+### 3.3. Endpoints a implementar
 
 1. **Endpoint de predicción con un modelo específico**  
    - Ruta sugerida: `POST /api/predict/`
@@ -204,7 +187,7 @@ Dentro de `ml_api`:
      }
      ```
 
-### 4.4. Pruebas con Postman
+### 3.4. Pruebas con Postman
 
 1. Configurar **Postman** con una colección de requests:
    - `POST /api/predict/`
@@ -220,9 +203,9 @@ Dentro de `ml_api`:
 
 ---
 
-## 5. Etapa Frontend: React + Vite + TailwindCSS
+## 4. Etapa Frontend: React + Vite + TailwindCSS
 
-### 5.1. Crear proyecto Vite + React
+### 4.1. Crear proyecto Vite + React
 
 1. Asegurarse de tener **Node.js** instalado.
 2. Crear el proyecto (JavaScript):
@@ -240,7 +223,7 @@ Dentro de `ml_api`:
 > **Checkpoint Git (en subcarpeta o repo separado):**  
 > Commit: `feat: proyecto vite react base`.
 
-### 5.2. Instalar y configurar TailwindCSS
+### 4.2. Instalar y configurar TailwindCSS
 
 1. Seguir los pasos estándar de instalación de TailwindCSS para Vite.
 2. Configurar `tailwind.config.js` y agregar las directivas en `index.css`.
@@ -249,7 +232,7 @@ Dentro de `ml_api`:
 > **Checkpoint Git:**  
 > Commit: `chore: configuración de tailwindcss en vite react`.
 
-### 5.3. Consumir la API desde React
+### 4.3. Consumir la API desde React
 
 Componentes sugeridos:
 
@@ -279,7 +262,7 @@ Componentes sugeridos:
 
 ---
 
-## 6. Integración y ejecución de punta a punta
+## 5. Integración y ejecución de punta a punta
 
 1. **Backend (Django)**  
    ```bash
@@ -304,7 +287,7 @@ Componentes sugeridos:
 
 ---
 
-## 7. Buenas prácticas de Git/GitHub (evitar problemas de rollback)
+## 6. Buenas prácticas de Git/GitHub (evitar problemas de rollback)
 
 Dado el problema anterior (faltó granularidad en los commits), se recomienda:
 
