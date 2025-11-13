@@ -129,7 +129,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Vite dev server
     "http://127.0.0.1:5173",
+    "http://localhost",  # Docker frontend
+    "http://localhost:80",
+    "http://127.0.0.1",
+    "http://127.0.0.1:80",
 ]
+
+# Allow all origins for development (comment out in production)
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_METHODS = [
     'DELETE',

@@ -32,8 +32,14 @@ class ModelService:
         Carga todos los modelos PKL desde la carpeta models/
         """
         # Obtener la ruta base del proyecto
+        # En Docker, los modelos están en /app/models
+        # En desarrollo local, están en ../../../../models
         base_dir = Path(__file__).resolve().parent.parent.parent.parent
         models_dir = base_dir / 'models'
+        
+        # Si no existe (Docker), intentar la ruta absoluta
+        if not models_dir.exists():
+            models_dir = Path('/app/models')
         
         print(f"[ModelService] Buscando modelos en: {models_dir}")
         
