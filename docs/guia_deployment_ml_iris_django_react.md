@@ -125,7 +125,7 @@ Responsabilidades:
 Dentro de `ml_api`:
 
 1. Crear un módulo, por ejemplo `services.py`, que:
-   - Importe las funciones de `ml_core.py`.
+   - integrar los pkl que se encuentran en la carpeta models/ que ya estan creado al backend de django. Al iniciar Django, el sistema deberia cargar los pkl.
    - Cargue los modelos al iniciar el servidor (o bajo demanda).
 2. Usar Copilot con prompts del tipo:
    - *“Create a Django view that receives a POST with model_name and iris features and returns a JSON prediction using a loaded sklearn model”*.

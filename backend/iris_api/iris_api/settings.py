@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ml_api',
+    'ml_api.apps.MlApiConfig',  # Usar la configuración completa para ejecutar ready()
 ]
 
 MIDDLEWARE = [
